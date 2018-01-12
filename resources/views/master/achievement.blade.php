@@ -4,8 +4,8 @@
     <div class="page-head">
         <!-- BEGIN PAGE TITLE -->
         <div class="page-title">
-            <h1>Return Distributor Report
-                <small>report return distributor</small>
+            <h1>Achievement Report
+                <small>report achievement</small>
             </h1>
         </div>
         <!-- END PAGE TITLE -->
@@ -16,7 +16,7 @@
             <i class="fa fa-circle"></i>
         </li>
         <li>
-            <span class="active">Return Distributor Reporting</span>
+            <span class="active">Achievement Report Reporting</span>
         </li>
     </ul>
 @endsection
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="caption padding-caption">
-                    <span class="caption-subject font-dark bold uppercase" style="font-size: 12px;"><i class="fa fa-cog"></i> BY DETAILS</span>
+                    <span class="caption-subject font-dark bold uppercase" style="font-size: 12px;"><i class="fa fa-cog"></i> FILTERS BY</span>
                 </div>
 
                 <div class="row filter" style="margin-top: 10px;">
@@ -77,46 +77,97 @@
 
                 </div>
 
-                <div class="portlet light display-hide bordered" id="dataContent">
+                <div class="portlet light bordered display-hide" id="dataContent">
                     <!-- MAIN CONTENT -->
                     <div class="portlet-title">
                         <div class="caption">
                             <i class="fa fa-map-o font-blue"></i>
-                            <span class="caption-subject font-blue bold uppercase">Return Distributor</span>
+                            <span class="caption-subject font-blue bold uppercase">Achievement Report</span>
+                        </div>
+                        <div class="actions" style="text-align: left">
+                            <a id="export" class="btn green-dark" >
+                                <i class="fa fa-cloud-download"></i> DOWNLOAD TO EXCEL ALT </a>
                         </div>
                     </div>
 
                     <div class="portlet-body">
 
-                        <table class="table table-striped table-hover table-bordered" id="retDistributorReport" style="white-space: nowrap;">
+                        <table class="table table-striped table-hover table-bordered" id="achievementReport" style="white-space: nowrap;">
                             <thead>
                             <tr>
                                 <th> No. </th>
-                                <th> Week </th>
-                                <th> Distributor Code </th>
-                                <th> Distributor Name </th>
                                 <th> Region </th>
-                                <th> Channel </th>
-                                <th> Sub Channel </th>
                                 <th> Area </th>
                                 <th> District </th>
-                                <th> Store Name 1 </th>
-                                <th> Store Name 2 </th>
-                                <th> Store ID </th>
                                 <th> NIK </th>
                                 <th> Promoter Name </th>
-                                <th> Date </th>
-                                <th> Model </th>
-                                <th> Group </th>
-                                <th> Category </th>
-                                <th> Product Name </th>
-                                <th> Quantity </th>
-                                <th> Unit Price </th>
-                                <th> Value </th>
-                                <th> Role </th>
-                                <th> SPV/ARO Name </th>
-                                <th> DM Name </th>
+                                <th> Account Type </th>
+                                <th> Title Of Promoter </th>
+                                <th> Classification Store </th>
+                                <th> Account </th>
+                                <th> Store ID </th>
+                                <th> Store Name 1 </th>
+                                <th> Store Name 2 </th>
+                                <th> SPV Name </th>
                                 <th> Trainer </th>
+                                <th> Sell Type </th>
+
+                                <th> Target DAPC </th>
+                                <th> Actual DAPC </th>
+                                <th> Target DA </th>
+                                <th> Actual DA </th>
+                                <th> Target PC </th>
+                                <th> Actual PC </th>
+                                <th> Target MCC </th>
+                                <th> Actual MCC </th>
+                                <th> Target PF DA </th>
+                                <th> Actual PF DA </th>
+                                <th> Target PF PC </th>
+                                <th> Actual PF PC </th>
+                                <th> Target PF MCC </th>
+                                <th> Actual PF MCC </th>
+
+                                <th> Target DA w1 </th>
+                                <th> Actual DA w1</th>
+                                <th> Target DA w2 </th>
+                                <th> Actual DA w2 </th>
+                                <th> Target DA w3 </th>
+                                <th> Actual DA w3 </th>
+                                <th> Target DA w4 </th>
+                                <th> Actual DA w4 </th>
+                                <th> Target DA w5 </th>
+                                <th> Actual DA w5 </th>
+                                <th> Target PC w1 </th>
+                                <th> Actual PC w1 </th>
+                                <th> Target PC w2 </th>
+                                <th> Actual PC w2 </th>
+                                <th> Target PC w3 </th>
+                                <th> Actual PC w3 </th>
+                                <th> Target PC w4 </th>
+                                <th> Actual PC w4 </th>
+                                <th> Target PC w5 </th>
+                                <th> Actual PC w5 </th>
+                                <th> Target MCC w1 </th>
+                                <th> Actual MCC w1 </th>
+                                <th> Target MCC w2 </th>
+                                <th> Actual MCC w2 </th>
+                                <th> Target MCC w3 </th>
+                                <th> Actual MCC w3 </th>
+                                <th> Target MCC w4 </th>
+                                <th> Actual MCC w4 </th>
+                                <th> Target MCC w5 </th>
+                                <th> Actual MCC w5 </th>
+
+                                <th> Sum Target Store</th>
+                                <th> Sum Actual Store</th>
+                                <th> Sum Target Area</th>
+                                <th> Sum Actual Area</th>
+                                <th> Sum Target Region</th>
+                                <th> Sum Actual Region</th>
+
+
+
+
                             </tr>
                             </thead>
                         </table>
@@ -135,6 +186,7 @@
 
     <!-- BEGIN SELECT2 SCRIPTS -->
     <script src="{{ asset('js/handler/select2-handler.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/handler/datetimepicker-handler.js') }}" type="text/javascript"></script>
     <!-- END SELECT2 SCRIPTS -->
 
     <script>
@@ -143,39 +195,83 @@
          *
          */
         var filterId = ['#filterRegion', '#filterArea', '#filterDistrict', '#filterStore', '#filterEmployee'];
-        var url = 'datatable/retdistributorreport';
+        var url = 'datatable/achievementreport';
         var order = [ [0, 'desc'] ];
         var columnDefs = [{"className": "dt-center", "targets": [0]}];
         var tableColumns = [{data: 'id', name: 'id', visible: false, orderable: false},
-                            {data: 'week', name: 'week'},
-                            {data: 'distributor_code', name: 'distributor_code'},
-                            {data: 'distributor_name', name: 'distributor_name'},
                             {data: 'region', name: 'region'},
-                            {data: 'channel', name: 'channel'},
-                            {data: 'sub_channel', name: 'sub_channel'},
                             {data: 'area', name: 'area'},
-                            {data: 'district', name: 'district'},
-                            {data: 'store_name_1', name: 'store_name_1'},
-                            {data: 'store_name_2', name: 'store_name_2'},
-                            {data: 'store_id', name: 'store_id'},
+                            {data: 'district', name: 'district'}, 
                             {data: 'nik', name: 'nik'},
                             {data: 'promoter_name', name: 'promoter_name'},
-                            {data: 'date', name: 'date'},
-                            {data: 'model', name: 'model'},
-                            {data: 'group', name: 'group'},
-                            {data: 'category', name: 'category'},
-                            {data: 'product_name', name: 'product_name'},
-                            {data: 'quantity', name: 'quantity'},
-                            {data: 'unit_price', name: 'unit_price'},
-                            {data: 'value', name: 'value'},
-                            {data: 'role', name: 'role'},
-                            {data: 'spv_name', name: 'spv_name'},
-                            {data: 'dm_name', name: 'dm_name'},
-                            {data: 'trainer_name', name: 'trainer_name'},
+                            {data: 'account_type', name: 'account_type'}, 
+                            {data: 'title_of_promoter', name: 'title_of_promoter'}, 
+                            {data: 'classification_store', name: 'classification_store'}, 
+                            {data: 'account', name: 'account'}, 
+                            {data: 'store_id', name: 'store_id'}, 
+                            {data: 'store_name_1', name: 'store_name_1'}, 
+                            {data: 'store_name_2', name: 'store_name_2'}, 
+                            {data: 'spv_name', name: 'spv_name'}, 
+                            {data: 'trainer', name: 'trainer'}, 
+                            {data: 'sell_type', name: 'sell_type'}, 
+                            {data: 'target_dapc', name: 'target_dapc'}, 
+                            {data: 'actual_dapc', name: 'actual_dapc'}, 
+                            {data: 'target_da', name: 'target_da'}, 
+                            {data: 'actual_da', name: 'actual_da'}, 
+                            {data: 'target_pc', name: 'target_pc'}, 
+                            {data: 'actual_pc', name: 'actual_pc'}, 
+                            {data: 'target_mcc', name: 'target_mcc'}, 
+                            {data: 'actual_mcc', name: 'actual_mcc'}, 
+                            {data: 'target_pf_da', name: 'target_pf_da'}, 
+                            {data: 'actual_pf_da', name: 'actual_pf_da'}, 
+                            {data: 'target_pf_pc', name: 'target_pf_pc'}, 
+                            {data: 'actual_pf_pc', name: 'actual_pf_pc'}, 
+                            {data: 'target_pf_mcc', name: 'target_pf_mcc'}, 
+                            {data: 'actual_pf_mcc', name: 'actual_pf_mcc'}, 
+                            {data: 'target_da_w1', name: 'target_da_w1'}, 
+                            {data: 'actual_da_w1', name: 'actual_da_w1'}, 
+                            {data: 'target_da_w2', name: 'target_da_w2'}, 
+                            {data: 'actual_da_w2', name: 'actual_da_w2'}, 
+                            {data: 'target_da_w3', name: 'target_da_w3'}, 
+                            {data: 'actual_da_w3', name: 'actual_da_w3'}, 
+                            {data: 'target_da_w4', name: 'target_da_w4'}, 
+                            {data: 'actual_da_w4', name: 'actual_da_w4'}, 
+                            {data: 'target_da_w5', name: 'target_da_w5'}, 
+                            {data: 'actual_da_w5', name: 'actual_da_w5'}, 
+                            {data: 'target_pc_w1', name: 'target_pc_w1'}, 
+                            {data: 'actual_pc_w1', name: 'actual_pc_w1'}, 
+                            {data: 'target_pc_w2', name: 'target_pc_w2'}, 
+                            {data: 'actual_pc_w2', name: 'actual_pc_w2'}, 
+                            {data: 'target_pc_w3', name: 'target_pc_w3'}, 
+                            {data: 'actual_pc_w3', name: 'actual_pc_w3'}, 
+                            {data: 'target_pc_w4', name: 'target_pc_w4'}, 
+                            {data: 'actual_pc_w4', name: 'actual_pc_w4'}, 
+                            {data: 'target_pc_w5', name: 'target_pc_w5'}, 
+                            {data: 'actual_pc_w5', name: 'actual_pc_w5'}, 
+                            {data: 'target_mcc_w1', name: 'target_mcc_w1'}, 
+                            {data: 'actual_mcc_w1', name: 'actual_mcc_w1'}, 
+                            {data: 'target_mcc_w2', name: 'target_mcc_w2'}, 
+                            {data: 'actual_mcc_w2', name: 'actual_mcc_w2'}, 
+                            {data: 'target_mcc_w3', name: 'target_mcc_w3'}, 
+                            {data: 'actual_mcc_w3', name: 'actual_mcc_w3'}, 
+                            {data: 'target_mcc_w4', name: 'target_mcc_w4'}, 
+                            {data: 'actual_mcc_w4', name: 'actual_mcc_w4'}, 
+                            {data: 'target_mcc_w5', name: 'target_mcc_w5'}, 
+                            {data: 'actual_mcc_w5', name: 'actual_mcc_w5'}, 
+                            {data: 'sum_target_store', name: 'sum_target_store'}, 
+                            {data: 'sum_actual_store', name: 'sum_actual_store'}, 
+                            {data: 'sum_target_area', name: 'sum_target_area'}, 
+                            {data: 'sum_actual_area', name: 'sum_actual_area'}, 
+                            {data: 'sum_target_region', name: 'sum_target_region'}, 
+                            {data: 'sum_actual_region', name: 'sum_actual_region'}, 
                             ];
 
-        var paramFilter = ['retDistributorReport', $('#retDistributorReport'), url, tableColumns, columnDefs, order];
-        var paramReset = [filterId, 'retDistributorReport', $('#retDistributorReport'), url, tableColumns, columnDefs, order];
+
+        var exportButton = '#export';
+
+        var paramFilter = ['achievementReport', $('#achievementReport'), url, tableColumns, columnDefs, order, exportButton];
+
+        var paramReset = [filterId, 'achievementReport', $('#achievementReport'), url, tableColumns, columnDefs, order];
 
         $(document).ready(function () {
 
@@ -186,18 +282,18 @@
             });
 
             // Set data for Data Table
-            var table = $('#retDistributorReport').dataTable({
-                "processing": true,
-                "serverSide": true,
-                "ajax": {
-                    url: "{{ route('datatable.retdistributorreport') }}",
-                    type: 'POST',
-                },
-                "rowId": "id",
-                "columns": tableColumns,
-                "columnDefs": columnDefs,
-                "order": order,
-            });
+            {{--var table = $('#achievementReport').dataTable({--}}
+                {{--"processing": true,--}}
+                {{--"serverSide": true,--}}
+                {{--"ajax": {--}}
+                    {{--url: "{{ route('datatable.achievementreport') }}",--}}
+                    {{--type: 'POST',--}}
+                {{--},--}}
+                {{--"rowId": "id",--}}
+                {{--"columns": tableColumns,--}}
+                {{--"columnDefs": columnDefs,--}}
+                {{--"order": order,--}}
+            {{--});--}}
 
             initSelect2();
             initDateTimePicker();
@@ -255,8 +351,8 @@
             }, function (data, params) {
                 return {
                     results: $.map(data, function (obj) {
-	                    return {id: obj.id, text: obj.store_id + " - " + obj.store_name_1 + " (" + obj.store_name_2 + ")"}
-	                })
+                        return {id: obj.id, text: obj.store_id + " - " + obj.store_name_1 + " (" + obj.store_name_2 + ")"+ " - " + obj.dedicate}
+                    })
                 }
             }));
             $('#filterStore').on('select2:select', function () {
@@ -296,11 +392,11 @@
         }
 
         // On Change Search Date
-        $(document).ready(function() {
+		$(document).ready(function() {
 
             $('#filterMonth').change(function(){
-                filters['searchMonth'] = this.value;
-                console.log(filters);
+				filters['searchMonth'] = this.value;
+				console.log(filters);
             });
 
         });
@@ -332,7 +428,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: 'util/export-retdistributor',
+                    url: 'util/export-achievement',
                     dataType: 'json',
                     data: {data: data},
                     global: false,

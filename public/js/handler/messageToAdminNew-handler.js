@@ -6,9 +6,9 @@
 var FormValidation = function () {
 
     // Master Validation
-    var priceValidation = function() {
+    var messageToAdminShowValidation = function() {
 
-            var form = $('#form_price');
+            var form = $('#form_messageToAdminShow');
             var errorAlert = $('.alert-danger', form);
             var successAlert = $('.alert-success', form);
 
@@ -18,29 +18,24 @@ var FormValidation = function () {
                 focusInvalid: false, // do not focus the last invalid input
                 ignore: "",  // validate all fields including form hidden input
                 rules: {
-                    product_id:{
+                    user: {
+                        minlength: 2,
                         required: true,
                     },
-                    globalchannel_id:{
+
+
+                    subject: {
+                        minlength: 2,
                         required: true,
                     },
-                    sell_type:{
-                        required: true,
-                    },
-                    price: {
-                        number: true,
-                        min: 1,
+                    message: {
+                        minlength: 2,
                         required: true,
                     },
 
                 },
                 messages:{
-                    product_id:{
-                        required: "Please select a Product!"
-                    },
-                    globalchannel_id:{
-                        required: "Please select a Global Channel!"
-                    },
+
                 },
 
                 invalidHandler: function (event, validator) { //display error alert on form submit
@@ -208,10 +203,10 @@ var FormValidation = function () {
                                     // window.location.href = data.url;
                                     // console.log(data);
 
-                                    $('#priceTable').DataTable().search('').draw();
-                                    $('#priceTable').DataTable().ajax.reload();
+                                    $('#messageToAdminTable').DataTable().search('').draw();
+                                    $('#messageToAdminTable').DataTable().ajax.reload();
 
-                                    $('#price').modal('hide');
+                                    $('#messageToAdminShow').modal('hide');
                                 }
                             )
                             // console.log(data.method);
@@ -233,7 +228,7 @@ var FormValidation = function () {
         //main function to initiate the module
         init: function () {
 
-            priceValidation();
+            messageToAdminValidation();
 
         }
 
@@ -257,17 +252,17 @@ jQuery(document).ready(function() {
 
 $(document.body).on("change",".select2select",function(){
 
-    select2Change($(this), $('#form_price'));
+    select2Change($(this), $('#form_form_messageToAdmin'));
 
 });
 
 // Reset Validation
 function resetValidation(){
-    $('#form_price').each(function(){
+    $('#form_messageToAdminShow').each(function(){
         $(this).find('.form-group').removeClass('has-error').removeClass('has-success');
         $(this).find('.fa').removeClass('fa-check').removeClass('fa-warning');
     });
 
-    $('.alert-danger', $('#form_price')).hide();
-    $('.alert-success', $('#form_price')).hide();
+    $('.alert-danger', $('#form_messageToAdminShow')).hide();
+    $('.alert-success', $('#form_messageToAdminShow')).hide();
 }

@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nik', 'name', 'email', 'password', 'role', 'status', 'photo'
+        'nik', 'name', 'email', 'password', 'role', 'status', 'photo', 'join_date', 'grading'
     ];
 
     /**
@@ -134,6 +134,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Attendance', 'user_id');
     }    
 
+    public function historyEmployeeStores()
+    {
+        return $this->hasMany('App\Reports\HistoryEmployeeStore', 'user_id');
+    }
     /**
      * Filtering Berdasarakan Request User
      * @param $query

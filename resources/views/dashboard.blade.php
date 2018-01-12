@@ -36,47 +36,210 @@
 	        <div class="portlet-body">
 
                     <div>
-                    	<div id="content" class="col-md-6">
-	                        <h3 id="titleSellinTotal"></h3>
-	                        <div class="demo-container col-md-12 align-middle">
-	                            <div id="chartSellinTotal" class="align-middle"></div>
-	                        </div>
-	                        <p id="descriptionSellinTotal"></p>
-	                        <p id="hoverSellinTotal"></p>
-	                    </div>
 
-	                    <div id="content2" class="col-md-6">
-	                        <h3 id="titleSelloutTotal"></h3>
-	                        <div class="demo-container col-md-12 align-middle">
-	                            <div id="chartSelloutTotal" class="align-middle"></div>
-	                        </div>
-	                        <p id="descriptionSelloutTotal"></p>
-	                        <p id="hoverSelloutTotal"></p>
-	                    </div>
+						<div class="row">
+							<div class="col-md-12" style="text-align: center;padding-bottom: 20px;">
+								<h3>Total Achievement</h3>
+							</div>
+						</div>
 
+						<div id="notSellIn" class="display-hide">
+							<div class="row">
+								<div class="col-md-12" style="text-align: center;padding-bottom: 20px;padding-top: 120px;">
+									<h4>Tidak Ada Achievement - Sell In</h4>
+								</div>
+							</div>
+						</div>
 
-	                    <div id="content3" class="col-md-6">
-	                        <h3 id="titleSellinDa"></h3>
-	                        <div class="demo-container col-md-12 align-middle">
-	                            <div id="chartSellinDa" class="align-middle"></div>
-	                        </div>
-	                        <p id="descriptionSellinDa"></p>
-	                        <p id="hoverSellinDa"></p>
-	                    </div>
+						<div id="sellIn">
 
-	                    <div id="content4" class="col-md-6">
-	                        <h3 id="titleSelloutDa"></h3>
-	                        <div class="demo-container col-md-12 align-middle">
-	                            <div id="chartSelloutDa" class="align-middle"></div>
-	                        </div>
-	                        <p id="descriptionSelloutDa"></p>
-	                        <p id="hoverSelloutDa"></p>
-	                    </div>
-                    </div>
+							<div class="row">
+								<div id="content" class="col-md-6">
+									<h4 id="titleSellinTotal" style="text-align: center;margin-right:50px;margin-bottom: 20px;"></h4>
+									<div class="demo-container col-md-12 align-middle">
+										<div id="chartSellinTotal" class="align-middle"></div>
+									</div>
+								</div>
+
+								<div id="content2" class="col-md-6">
+										<!-- BEGIN SAMPLE TABLE PORTLET-->
+										<div id="table2" class="portlet box blue" style="width: 75%">
+											<div class="portlet-title" style="text-align: center">
+												<div style="font-size: 11pt;padding-top: 10px;">
+													<i class="fa fa-line-chart"></i>
+													Total Achievement - Sell In </div>
+											</div>
+											<div id="portlet1" class="portlet-body" style="display: block;">
+													<div class="table-scrollable">
+													<table class="table table-striped">
+														<tbody>
+															<tr style="height: 45px;">
+																<td width="40%" style="padding-left: 15px;"> Target </td>
+																<td id="sellin1" width="60%"> - </td>
+															</tr>
+															<tr style="height: 45px;">
+																<td style="padding-left: 15px;"> Actual </td>
+																<td id="sellin2"> - </td>
+															</tr>
+															<tr style="height: 45px;">
+																<td style="padding-left: 15px;"> A/T % </td>
+																<td id="sellin3"> - </td>
+															</tr>
+															<tr style="height: 45px;">
+																<td style="padding-left: 15px;"> GAP </td>
+																<td id="sellin4"> - </td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<!-- END SAMPLE TABLE PORTLET-->
+								</div>
+							</div>
+
+						</div>
+
+						<div id="notSellOut" class="display-hide">
+							<div class="row">
+								<div class="col-md-12" style="text-align: center;padding-bottom: 20px;padding-top: 120px;">
+									<h4>Tidak Ada Achievement - Sell Out</h4>
+								</div>
+							</div>
+						</div>
+
+						<div id="sellOut">
+
+							<div class="row" style="margin-top: 30px;">
+								<div id="content3" class="col-md-6">
+									<h4 id="titleSelloutTotal" style="text-align: center;margin-right:50px;margin-bottom: 20px;"></h4>
+									<div class="demo-container col-md-12 align-middle">
+										<div id="chartSelloutTotal" class="align-middle"></div>
+									</div>
+								</div>
+
+								<div id="content4" class="col-md-6">
+									<!-- BEGIN SAMPLE TABLE PORTLET-->
+										<div id="table2" class="portlet box blue" style="width: 75%">
+											<div class="portlet-title" style="text-align: center">
+												<div style="font-size: 11pt;padding-top: 10px;">
+													<i class="fa fa-line-chart"></i>
+													Total Achievement - Sell Out </div>
+											</div>
+											<div id="portlet2" class="portlet-body" style="display: block;">
+													<div class="table-scrollable">
+													<table class="table table-striped">
+														<tbody>
+															<tr style="height: 45px;">
+																<td width="40%" style="padding-left: 15px;"> Target </td>
+																<td id="sellout1" width="60%"> - </td>
+															</tr>
+															<tr style="height: 45px;">
+																<td style="padding-left: 15px;"> Actual </td>
+																<td id="sellout2"> - </td>
+															</tr>
+															<tr style="height: 45px;">
+																<td style="padding-left: 15px;"> A/T % </td>
+																<td id="sellout3"> - </td>
+															</tr>
+															<tr style="height: 45px;">
+																<td style="padding-left: 15px;"> GAP </td>
+																<td id="sellout4"> - </td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<!-- END SAMPLE TABLE PORTLET-->
+								</div>
+							</div>
+
+						</div>
+
+						@if(Auth::user()->role == 'Master' || Auth::user()->role == 'Admin')
+						<div class="row">
+							<div class="col-md-12" style="text-align: center;padding-bottom:20px;padding-top: 20px;">
+								<h3>Salesman Achievement</h3>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div id="content5" class="col-md-8">
+								<!-- BEGIN SAMPLE TABLE PORTLET-->
+									<div id="table3" class="portlet box blue" style="width: 100%">
+										<div class="portlet-title" style="text-align: center">
+											<div style="font-size: 11pt;padding-top: 10px;">
+												<i class="fa fa-line-chart"></i>
+												Total Achievement - Salesman </div>
+										</div>
+										<div id="portlet2" class="portlet-body" style="display: block;">
+												<div class="table-scrollable">
+												<table class="table table-striped">
+													<tbody>
+														<tr>
+															<td></td>
+															<td><b>Sales</b></td>
+															<td style="text-align: center;"><b>Sales Product Focus</b></td>
+															<td style="text-align: center;"><b>Call</b></td>
+															<td style="text-align: center;"><b>Active Outlet</b></td>
+															<td style="text-align: center;"><b>Effective Call</b></td>
+														</tr>
+														<tr>
+															<td><b>Target</b></td>
+															<td id="salesmanTargetSales">-</td>
+															<td id="salesmanTargetSalesPF">-</td>
+															<td id="salesmanTargetCall" style="text-align: center;">-</td>
+															<td id="salesmanTargetAO" style="text-align: center;">-</td>
+															<td id="salesmanTargetEC" style="text-align: center;">-</td>
+														</tr>
+														<tr>
+															<td><b>Actual</b></td>
+															<td id="salesmanActualSales">-</td>
+															<td id="salesmanActualSalesPF">-</td>
+															<td id="salesmanActualCall" style="text-align: center;">-</td>
+															<td id="salesmanActualAO" style="text-align: center;">-</td>
+															<td id="salesmanActualEC" style="text-align: center;">-</td>
+														</tr>
+														<tr>
+															<td><b>A/T%</b></td>
+															<td id="salesmanATSales" style="text-align: center;">-</td>
+															<td id="salesmanATSalesPF" style="text-align: center;">-</td>
+															<td id="salesmanATCall" style="text-align: center;">-</td>
+															<td id="salesmanATAO" style="text-align: center;">-</td>
+															<td id="salesmanATEC" style="text-align: center;">-</td>
+														</tr>
+														<tr>
+															<td><b>GAP</b></td>
+															<td id="salesmanGAPSales">-</td>
+															<td id="salesmanGAPSalesPF">-</td>
+															<td id="salesmanGAPCall" style="text-align: center;">-</td>
+															<td id="salesmanGAPAO" style="text-align: center;">-</td>
+															<td id="salesmanGAPEC" style="text-align: center;">-</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+									<!-- END SAMPLE TABLE PORTLET-->
+								<div class="col-md-2"></div>
+							</div>
+						</div>
+						@endif
 
 			</div><!-- 
 		</div>
 		<!-- END EXAMPLE TABLE PORTLET-->
+
+				<div id="contentt">
+
+					<div class="demo-container2">
+						<div id="placeholder" class="demo-placeholder2"></div>
+					</div>
+
+				</div>
 	</div>
 </div>
 	
@@ -105,34 +268,6 @@
         height: 100%;
     }
 
-    #chartSellinDa {
-        /*width: 550px;*/
-        width: 100%;
-        height: 100%;
-    }
-
-    #chartSelloutDa {
-        /*width: 550px;*/
-        width: 100%;
-        height: 100%;
-    }
-
-    #descriptionSellinTotal {
-        margin: 15px 10px 20px 10px;
-    }
-
-    #descriptionSelloutTotal {
-        margin: 15px 10px 20px 10px;
-    }
-
-    #descriptionSellinDa {
-        margin: 15px 10px 20px 10px;
-    }
-
-    #descriptionSelloutDa {
-        margin: 15px 10px 20px 10px;
-    }
-
     ul {
         font-size: 10pt;
     }
@@ -156,251 +291,212 @@
 
     $(function() {
 
-        // Example Data
+        var x = ($("#content").width()-$("#portlet1").width())/2;
+        var y = ($("#content").height()-$("#portlet1").height())/2;
 
-        // var data = [
-        //  { label: "Series1",  data: 10},
-        //  { label: "Series2",  data: 30},
-        //  { label: "Series3",  data: 90},
-        //  { label: "Series4",  data: 70},
-        //  { label: "Series5",  data: 80},
-        //  { label: "Series6",  data: 110}
-        // ];
+        document.getElementById('content2').setAttribute('style', 'padding-left:'+x+'px;padding-top:'+y+'px;');
 
-        //var data = [
-        //  { label: "Series1",  data: [[1,10]]},
-        //  { label: "Series2",  data: [[1,30]]},
-        //  { label: "Series3",  data: [[1,90]]},
-        //  { label: "Series4",  data: [[1,70]]},
-        //  { label: "Series5",  data: [[1,80]]},
-        //  { label: "Series6",  data: [[1,0]]}
-        //];
+        var x = ($("#content3").width()-$("#portlet2").width())/2;
+        var y = ($("#content3").height()-$("#portlet2").height())/2;
 
-        //var data = [
-        //  { label: "Series A",  data: 0.2063},
-        //  { label: "Series B",  data: 38888}
-        //];
-        var index = 0;
-        var dataSellinTotal = [];
-        var getDataUrl = 'achievement-by-national/1';
+        document.getElementById('content4').setAttribute('style', 'padding-left:'+x+'px;padding-top:'+y+'px;');
+
+		var options = {
+			series: {
+				pie: {
+					innerRadius: 0.5,
+					show: true,
+					radius: 1,
+					label: {
+						show: true,
+						radius: 3/4,
+						formatter: labelFormatter,
+						background: {
+							opacity: 0.5,
+							color: '#000'
+						}
+					}
+				}
+			},
+		};
+
+		var role = '{{ Auth::user()->role  }}';
+
+		var getDataUrl = "{{ url('chart/data-national') }}";
+
+		if(role == 'RSM'){
+		    getDataUrl = "{{ url('chart/data-region') }}";
+		}else if(role == 'DM'){
+		    getDataUrl = "{{ url('chart/data-area') }}";
+        }else if(role == 'Supervisor' || role == 'Supervisor Hybrid'){
+		    getDataUrl = "{{ url('chart/data-supervisor') }}";
+        }
+
+//        console.log(getDataUrl);
+
+		// Create IDR currency formatter.
+		var formatter = new Intl.NumberFormat('id', {
+		  style: 'currency',
+		  currency: 'IDR',
+		  minimumFractionDigits: 2,
+		});
+
+		$.get(getDataUrl, function (data) {
+
+		    if(data){
+		        if(data.sell_in_target == '0') document.getElementById('sellin1').innerHTML = '-'
+		        else document.getElementById('sellin1').innerHTML = formatter.format(data.sell_in_target.toFixed(2)).replace("Rp", "Rp. ");
+		        if(data.sell_in_actual == '0') document.getElementById('sellin2').innerHTML = '-'
+		        else document.getElementById('sellin2').innerHTML = formatter.format(data.sell_in_actual.toFixed(2)).replace("Rp", "Rp. ");
+		        if(data.sell_in_at == '0') document.getElementById('sellin3').innerHTML = '-'
+		        else document.getElementById('sellin3').innerHTML = data.sell_in_at.toFixed(1)+'%';
+		        if(data.sell_in_gap == '0') document.getElementById('sellin4').innerHTML = '-'
+		        else document.getElementById('sellin4').innerHTML = formatter.format(data.sell_in_gap.toFixed(2)).replace("Rp", "Rp. ");
+
+		        if(data.sell_out_target == '0') document.getElementById('sellout1').innerHTML = '-'
+		        else document.getElementById('sellout1').innerHTML = formatter.format(data.sell_out_target.toFixed(2)).replace("Rp", "Rp. ");
+		        if(data.sell_out_actual == '0') document.getElementById('sellout2').innerHTML = '-'
+		        else document.getElementById('sellout2').innerHTML = formatter.format(data.sell_out_actual.toFixed(2)).replace("Rp", "Rp. ");
+		        if(data.sell_out_at == '0') document.getElementById('sellout3').innerHTML = '-'
+		        else document.getElementById('sellout3').innerHTML = data.sell_out_at.toFixed(1)+'%';
+		        if(data.sell_out_gap == '0') document.getElementById('sellout4').innerHTML = '-'
+		        else document.getElementById('sellout4').innerHTML = formatter.format(data.sell_out_gap.toFixed(2)).replace("Rp", "Rp. ");
+            }
+
+        });
+
+		//--- Fetch Salesman Data, If Master / Admin ---//
+
+		if(role == 'Master' || role == 'Admin') {
+
+            var getDataUrlSalesman = "{{ url('chart/data-national-salesman') }}";
+
+            $.get(getDataUrlSalesman, function (data) {
+
+                if (data) {
+					if(data.sum_national_target_sales == '0') document.getElementById('salesmanTargetSales').innerHTML = '-'
+		        	else document.getElementById('salesmanTargetSales').innerHTML = formatter.format(data.sum_national_target_sales.toFixed(2)).replace("Rp", "Rp. ");
+					if(data.sum_national_actual_sales == '0') document.getElementById('salesmanActualSales').innerHTML = '-'
+		        	else document.getElementById('salesmanActualSales').innerHTML = formatter.format(data.sum_national_actual_sales.toFixed(2)).replace("Rp", "Rp. ");
+					if(data.sum_national_at_sales == '0') document.getElementById('salesmanATSales').innerHTML = '-'
+		        	else document.getElementById('salesmanATSales').innerHTML = data.sum_national_at_sales.toFixed(1)+'%';
+					if(data.sum_national_gap_sales == '0') document.getElementById('salesmanGAPSales').innerHTML = '-'
+		        	else document.getElementById('salesmanGAPSales').innerHTML = formatter.format(data.sum_national_gap_sales.toFixed(2)).replace("Rp", "Rp. ");
+
+					if(data.sum_national_target_sales_pf == '0') document.getElementById('salesmanTargetSalesPF').innerHTML = '-'
+		        	else document.getElementById('salesmanTargetSalesPF').innerHTML = formatter.format(data.sum_national_target_sales_pf.toFixed(2)).replace("Rp", "Rp. ");
+					if(data.sum_national_actual_sales_pf == '0') document.getElementById('salesmanActualSalesPF').innerHTML = '-'
+		        	else document.getElementById('salesmanActualSalesPF').innerHTML = formatter.format(data.sum_national_actual_sales_pf.toFixed(2)).replace("Rp", "Rp. ");
+					if(data.sum_national_at_sales_pf == '0') document.getElementById('salesmanATSalesPF').innerHTML = '-'
+		        	else document.getElementById('salesmanATSalesPF').innerHTML = data.sum_national_at_sales_pf.toFixed(1)+'%';
+					if(data.sum_national_gap_sales_pf == '0') document.getElementById('salesmanGAPSalesPF').innerHTML = '-'
+		        	else document.getElementById('salesmanGAPSalesPF').innerHTML = formatter.format(data.sum_national_gap_sales_pf.toFixed(2)).replace("Rp", "Rp. ");
+
+					if(data.sum_national_target_call == '0') document.getElementById('salesmanTargetCall').innerHTML = '-'
+		        	else document.getElementById('salesmanTargetCall').innerHTML = data.sum_national_target_call.toFixed(0);
+					if(data.sum_national_actual_call == '0') document.getElementById('salesmanActualCall').innerHTML = '-'
+		        	else document.getElementById('salesmanActualCall').innerHTML = data.sum_national_actual_call.toFixed(0);
+					if(data.sum_national_at_call == '0') document.getElementById('salesmanATCall').innerHTML = '-'
+		        	else document.getElementById('salesmanATCall').innerHTML = data.sum_national_at_call.toFixed(1)+'%';
+					if(data.sum_national_gap_call == '0') document.getElementById('salesmanGAPCall').innerHTML = '-'
+		        	else document.getElementById('salesmanGAPCall').innerHTML = data.sum_national_gap_call.toFixed(0);
+
+					if(data.sum_national_target_active_outlet == '0') document.getElementById('salesmanTargetAO').innerHTML = '-'
+		        	else document.getElementById('salesmanTargetAO').innerHTML = data.sum_national_target_active_outlet.toFixed(0);
+					if(data.sum_national_actual_active_outlet == '0') document.getElementById('salesmanActualAO').innerHTML = '-'
+		        	else document.getElementById('salesmanActualAO').innerHTML = data.sum_national_actual_active_outlet.toFixed(0);
+					if(data.sum_national_at_active_outlet == '0') document.getElementById('salesmanATAO').innerHTML = '-'
+		        	else document.getElementById('salesmanATAO').innerHTML = data.sum_national_at_active_outlet.toFixed(1)+'%';
+					if(data.sum_national_gap_active_outlet == '0') document.getElementById('salesmanGAPAO').innerHTML = '-'
+		        	else document.getElementById('salesmanGAPAO').innerHTML = data.sum_national_gap_active_outlet.toFixed(0);
+
+					if(data.sum_national_target_effective_call == '0') document.getElementById('salesmanTargetEC').innerHTML = '-'
+		        	else document.getElementById('salesmanTargetEC').innerHTML = data.sum_national_target_effective_call.toFixed(0);
+					if(data.sum_national_actual_effective_call == '0') document.getElementById('salesmanActualEC').innerHTML = '-'
+		        	else document.getElementById('salesmanActualEC').innerHTML = data.sum_national_actual_effective_call.toFixed(0);
+					if(data.sum_national_at_effective_call == '0') document.getElementById('salesmanATEC').innerHTML = '-'
+		        	else document.getElementById('salesmanATEC').innerHTML = data.sum_national_at_effective_call.toFixed(1)+'%';
+					if(data.sum_national_gap_effective_call == '0') document.getElementById('salesmanGAPEC').innerHTML = '-'
+		        	else document.getElementById('salesmanGAPEC').innerHTML = data.sum_national_gap_effective_call.toFixed(0);
+                }
+
+            });
+
+        }
+
+		//---------------------- SELL IN --------------------------------//
+
         $.get(getDataUrl, function (data) {
+
 	        if(data){
-	        	dataSellinTotal[index] = {
-	                label: "Series" + (index + 1),
-	                data: data.id
-	            }
-	            index++;
+	        	dataSellinTotal = [
+				  { label: "Total Actual",  data: [[1,(data.sell_in_actual)]], color: '#16E221'},
+				  { label: "GAP Target",  data: [[1,(data.sell_in_gap)]], color: '#FE0000'},
+				];
+
+	        	$.plot(chartSellinTotal, dataSellinTotal, options);
+
+	        	$('#notSellIn').addClass('display-hide');
+	        	$('#sellIn').removeClass('display-hide');
+
+	        	if(data.sell_in_actual == 0 && data.sell_in_target == 0){
+					$('#notSellIn').removeClass('display-hide');
+					$('#sellIn').addClass('display-hide');
+				}
 	        }
 	    });
-        console.log(dataSellinTotal);
-        // Randomly Generated Data
 
-        var data = [],
-            series = Math.floor(Math.random() * 6) + 3;
-
-        for (var i = 0; i < series; i++) {
-            data[i] = {
-                label: "Series" + (i + 1),
-                data: Math.floor(Math.random() * 100) + 1
-            }
-        }
+        data = [
+				  { label: "Total Actual",  data: [[1,1]], color: '#16E221'},
+				  { label: "GAP Target",  data: [[1,1]], color: '#FE0000'},
+				];
 
         var chartSellinTotal = $("#chartSellinTotal");
 
-            chartSellinTotal.unbind();
+		chartSellinTotal.unbind();
 
-            $("#titleSellinTotal").text("Sell In TOTAL");
-            
-            $("#descriptionSellinTotal").text("The default pie chart with no options set.");
-            
+		$("#titleSellinTotal").text("ACTUAL vs TARGET (%) - SELL IN");
 
-            $.plot(chartSellinTotal, data, {
-                series: {
-                    pie: { 
-                        show: true
-                    }
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true
-                }
-            });
+		$.plot(chartSellinTotal, data, options);
 
-            chartSellinTotal.bind("plothover", function(event, pos, obj) {
 
-                if (!obj) {
-                    return;
-                }
+		//---------------------- SELL OUT --------------------------------//
 
-                var percent = parseFloat(obj.series.percent).toFixed(2);
-                $("#hoverSellinTotal").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
-            });
+        $.get(getDataUrl, function (data) {
 
-            chartSellinTotal.bind("plotclick", function(event, pos, obj) {
+	        if(data){
+	        	dataSelloutTotal = [
+				  { label: "Total Actual",  data: [[1,(data.sell_out_actual)]], color: '#16E221'},
+				  { label: "GAP Target",  data: [[1,(data.sell_out_gap)]], color: '#FE0000'},
+				];
 
-                if (!obj) {
-                    return;
-                }
+	        	$.plot(chartSelloutTotal, dataSelloutTotal, options);
 
-                percent = parseFloat(obj.series.percent).toFixed(2);
-                alert(""  + obj.series.label + ": " + percent + "%");
-            });
+	        	$('#notSellOut').addClass('display-hide');
+	        	$('#sellOut').removeClass('display-hide');
 
-            //-----------------------
-            function labelFormatter(label, series) {
-            	var total = series.percent;
-			    return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>"    + label + "<br/>" +total.toFixed(1)+"% ("+ series.data[0][1] + ")</div>";
-			}
-            var chartSelloutTotal = $("#chartSelloutTotal");
-            chartSelloutTotal.unbind();
-            $("#titleSelloutTotal").text("Sell Out TOTAL");
-            $("#descriptionSelloutTotal").text("The default pie chart with no options set.");
-            $.plot(chartSelloutTotal, data, {
-                series: {
-                    pie: { 
-                        show: true,
-                        radius: 1,
-			            tilt: 0.5,
-			            label: {
-			                show: true,
-			                radius: 1,
-			                formatter: labelFormatter,
-			                background: {
-			                    opacity: 0.8
-			                }
-			            },
-			            combine: {
-			                color: '#999',
-			                threshold: 0.1
-			            }
-                    },
-	                valueLabels: {
-	                    show: true,
-	                    showAsHtml: true,
-	                    align: "center"
-	                }   
+	        	if(data.sell_out_actual == 0 && data.sell_out_target == 0){
+					$('#notSellOut').removeClass('display-hide');
+					$('#sellOut').addClass('display-hide');
+				}
+	        }
+	    });
 
-                },
-                grid: {
-                    hoverable: true,
-                    // clickable: true
-                },
-			    legend: {
-			        show: false
-			    }
-            });
-            chartSelloutTotal.bind("plothover", function(event, pos, obj) {
 
-                if (!obj) {
-                    return;
-                }
- 
-                var percent = parseFloat(obj.series.percent).toFixed(2);
-                $("#hoverSelloutTotal").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + obj.series.data[0][1] + ")</span>");
+        data = [
+				  { label: "Total Actual",  data: [[1,1]], color: '#16E221'},
+				  { label: "GAP Target",  data: [[1,1]], color: '#FE0000'},
+				];
 
-            });
+        var chartSelloutTotal = $("#chartSelloutTotal");
 
-            // chartSelloutTotal.bind("plotclick", function(event, pos, obj) {
+		chartSellinTotal.unbind();
 
-            //     if (!obj) {
-            //         return;
-            //     }
+		$("#titleSelloutTotal").text("ACTUAL vs TARGET (%) - SELL OUT");
 
-            //     percent = parseFloat(obj.series.percent).toFixed(2);
-            //     alert(""  + obj.series.label + ": " + percent + "%");
-            // });
+		$.plot(chartSelloutTotal, data, options);
 
-            //-------------------------------------------------------
-            var chartSellinDa = $("#chartSellinDa");
-
-            chartSellinDa.unbind();
-
-            $("#titleSellinDa").text("Sell In DA");
-            
-            $("#descriptionSellinDa").text("The default pie chart with no options set.");
-            
-
-            $.plot(chartSellinDa, data, {
-                series: {
-                    pie: { 
-                        show: true
-                    }
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true
-                }
-            });
-
-            chartSellinDa.bind("plothover", function(event, pos, obj) {
-
-                if (!obj) {
-                    return;
-                }
-
-                var percent = parseFloat(obj.series.percent).toFixed(2);
-                $("#hoverSellinDa").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
-            });
-
-            chartSellinDa.bind("plotclick", function(event, pos, obj) {
-
-                if (!obj) {
-                    return;
-                }
-
-                percent = parseFloat(obj.series.percent).toFixed(2);
-                alert(""  + obj.series.label + ": " + percent + "%");
-            });
-            //------------------------------------------------------------
-            var chartSelloutDa = $("#chartSelloutDa");
-            chartSelloutDa.unbind();
-            $("#titleSelloutDa").text("Sell Out DA");
-            $("#descriptionSelloutDa").text("The default pie chart with no options set.");
-            $.plot(chartSelloutDa, data, {
-                series: {
-                    pie: { 
-                        show: true,
-                        radius: 1,
-			            tilt: 0.5,
-			            label: {
-			                show: true,
-			                radius: 1,
-			                formatter: labelFormatter,
-			                background: {
-			                    opacity: 0.8
-			                }
-			            },
-			            combine: {
-			                color: '#999',
-			                threshold: 0.1
-			            }
-                    },
-	                valueLabels: {
-	                    show: true,
-	                    showAsHtml: true,
-	                    align: "center"
-	                }   
-
-                },
-                grid: {
-                    hoverable: true,
-                    // clickable: true
-                },
-			    legend: {
-			        show: false
-			    }
-            });
-            chartSelloutDa.bind("plothover", function(event, pos, obj) {
-
-                if (!obj) {
-                    return;
-                }
- 
-                var percent = parseFloat(obj.series.percent).toFixed(2);
-                $("#hoverSelloutDa").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + obj.series.data[0][1] + ")</span>");
-
-            });
-            //------------------------------------------------------------
+		//----------------------------------------------------------------//
 
         // Add the Flot version string to the footer
 
@@ -410,8 +506,17 @@
     // A custom label formatter used by several of the plots
 
     function labelFormatter(label, series) {
-        return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
-    }
+		var total = series.percent;
+
+		// Create IDR currency formatter.
+		var formatter = new Intl.NumberFormat('id', {
+		  style: 'currency',
+		  currency: 'IDR',
+		  minimumFractionDigits: 2,
+		});
+
+		return "<div style='font-size:9pt; text-align:center; padding:2px; color:white;'>"    + label + "<br/>" +total.toFixed(1)+"% ( "+ formatter.format(series.data[0][1].toFixed(2)).replace("Rp", "Rp. ") + " )</div>";
+	}
 
     //
 

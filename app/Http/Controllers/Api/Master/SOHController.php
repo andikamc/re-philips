@@ -71,7 +71,7 @@ class SOHController extends Controller
                                 /* Store */
                                 $store = Store::with('district.area.region', 'subChannel.channel.globalChannel', 'user')
                                             ->where('id', $sohHeader->store_id)->first();
-                                $spvName = ($store->user->name != '') ? $store->user->name : '';
+                                $spvName = (isset($store->user->name)) ? $store->user->name : '';
 
                                 /* Product */
                                 $product = Product::with('category.group.groupProduct')
@@ -80,7 +80,8 @@ class SOHController extends Controller
                                 /* Price */
                                 $realPrice = 0;
                                 $price = Price::where('product_id', $product->id)
-                                            ->where('globalchannel_id', $store->subChannel->channel->globalChannel->id)->first();
+                                            ->where('globalchannel_id', $store->subChannel->channel->globalChannel->id)
+                                            ->where('sell_type', 'Sell In')->first();
 
                                 if($price){
                                     $realPrice = $price->price;
@@ -203,7 +204,7 @@ class SOHController extends Controller
                             /* Store */
                             $store = Store::with('district.area.region', 'subChannel.channel.globalChannel', 'user')
                                         ->where('id', $transaction->store_id)->first();
-                            $spvName = ($store->user->name != '') ? $store->user->name : '';
+                            $spvName = (isset($store->user->name)) ? $store->user->name : '';
 
                             /* Product */
                             $product = Product::with('category.group.groupProduct')
@@ -212,7 +213,8 @@ class SOHController extends Controller
                             /* Price */
                             $realPrice = 0;
                             $price = Price::where('product_id', $product->id)
-                                        ->where('globalchannel_id', $store->subChannel->channel->globalChannel->id)->first();
+                                        ->where('globalchannel_id', $store->subChannel->channel->globalChannel->id)
+                                        ->where('sell_type', 'Sell In')->first();
 
                             if($price){
                                 $realPrice = $price->price;

@@ -13,6 +13,7 @@ use App\Store;
 use App\AreaApp;
 use App\EmployeeStore;
 use App\AttendanceDetail;
+use App\Reports\HistoryEmployeeStore;
 use DB;
 use Activity;
 use Auth;
@@ -62,15 +63,18 @@ class UtilController extends Controller
         $empStore = EmployeeStore::where('user_id', $userId);        
         $empStoreIds = $empStore->pluck('store_id');
         $store = Store::where('stores.deleted_at', null)
-                    ->join('sub_channels', 'stores.subchannel_id', '=', 'sub_channels.id')
-                    ->join('channels', 'sub_channels.channel_id', '=', 'channels.id')
-                    ->join('global_channels', 'channels.globalchannel_id', '=', 'global_channels.id')
+                    // ->join('sub_channels', 'stores.subchannel_id', '=', 'sub_channels.id')
+                    // ->join('channels', 'sub_channels.channel_id', '=', 'channels.id')
+                    // ->join('global_channels', 'channels.globalchannel_id', '=', 'global_channels.id')
                     ->join('districts', 'stores.district_id', '=', 'districts.id')
                     ->join('areas', 'districts.area_id', '=', 'areas.id')
                     ->join('regions', 'areas.region_id', '=', 'regions.id')
 //                    ->join('users', 'stores.user_id', '=', 'users.id')
                     ->whereIn('stores.id', $empStoreIds)
-                    ->select('stores.*', 'sub_channels.name as subchannel_name', 'channels.name as channel_name', 'global_channels.name as globalchannel_name', 'districts.name as district_name', 'areas.name as area_name', 'regions.name as region_name')->get();
+                    ->select('stores.*', 'districts.name as district_name', 'areas.name as area_name', 'regions.name as region_name'
+                        // , 'sub_channels.name as subchannel_name', 'channels.name as channel_name', 'global_channels.name as globalchannel_name'
+                        )
+                    ->get();
 
         foreach ($store as $item){
 
@@ -83,6 +87,40 @@ class UtilController extends Controller
         }
 
         return response()->json($store);
+    }
+
+    public function getHistoryStoreForEmployee($userId){        
+        // $empStore = EmployeeStore::where('employee_id', $employeeId);
+        $emStore = HistoryEmployeeStore::where('user_id', $userId)
+                    // ->join('stores as storeid', history_employee_stores.details, '=', 'stores.')
+                    ->orderBy('id', 'desc')->get();
+                    // ->select('history_employee_stores.*')
+        // pluck('details');
+        //         $result[0]['user_name']
+        $index = 0;
+        foreach ($emStore as $key => $value) {
+            $result[$index]['id'] = $value->id;
+            $result[$index]['user_id'] = $value->user_id;
+            $datem = date('F', strtotime($value->created_at));
+            $result[$index]['month'] = $datem;
+            $result[$index]['year'] = $value->year;
+            $result[$index]['details'] = $value->details;
+                $emStoreIds = explode(",", $value->details);
+            
+                $store = Store::where('stores.deleted_at', null)
+                            ->whereIn('stores.id', $emStoreIds)
+                            ->select('stores.*')->get();
+                    $idx = 0;
+                    foreach ($store as $keyStore => $valueStore) {
+                        $result[$index]['stores']['store_id'][$idx] = $valueStore->store_id;
+                        $result[$index]['stores']['store_name_1'][$idx] = $valueStore->store_name_1;
+                        $result[$index]['stores']['store_name_2'][$idx] = $valueStore->store_name_2;
+                        $idx ++;
+                    }
+            $index++;
+        }
+
+        return response()->json($result);
     }
 
     public function getStoreForSpvEmployee($userId){        

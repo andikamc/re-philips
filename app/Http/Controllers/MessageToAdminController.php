@@ -41,9 +41,24 @@ class MessageToAdminController extends Controller
      */
     public function masterDataTable(){
 
-        $data = MessageToAdmin::where('message_to_admin.deleted_at', null)
-                    ->join('users', 'message_to_admin.user_id', '=', 'users.id')
-                    ->select('message_to_admin.*', 'users.email as user')->get();
+        $userRole = Auth::user()->role;
+        $userId = Auth::user()->id;
+
+        if (($userRole == 'Master') || ($userRole == 'Master')) {
+            $data = MessageToAdmin::where('message_to_admin.deleted_at', null)
+                        ->join('users', 'message_to_admin.user_id', '=', 'users.id')
+                        ->select('message_to_admin.*', 'users.email as user')
+                        // ->orderBy('id', 'desc')
+                        ->get();
+        }
+        else {
+            $data = MessageToAdmin::where('message_to_admin.deleted_at', null)
+                        ->where('message_to_admin.user_id', $userId)
+                        ->join('users', 'message_to_admin.user_id', '=', 'users.id')
+                        ->select('message_to_admin.*', 'users.email as user')
+                        // ->orderBy('id', 'desc')
+                        ->get();
+        }
 
 
         return $this->makeTable($data);
@@ -60,14 +75,21 @@ class MessageToAdminController extends Controller
     public function makeTable($data){
 
         return Datatables::of($data)
-                ->addColumn('action', function ($item) {
+                ->addColumn('message', function ($item) {
+                    $jumlahkarakter=100;
+                    $cetak = substr($item->message, 0, $jumlahkarakter);
+                    return $cetak;
 
-                   return
-                    // "<a href='#messageToAdmin' data-id='".$item->id."' data-toggle='modal' class='btn btn-sm btn-warning edit-messageToAdmin'><i class='fa fa-pencil'></i></a>
-                    "<button class='btn btn-danger btn-sm btn-delete deleteButton' data-toggle='confirmation' data-singleton='true' value='".$item->id."'><i class='fa fa-remove'></i></button>";
 
                 })
-                ->rawColumns(['action'])
+                // ->addColumn('action', function ($item) {
+
+                //    return
+                    // "<a href='#messageToAdmin' data-id='".$item->id."' data-toggle='modal' class='btn btn-sm btn-warning edit-messageToAdmin'><i class='fa fa-pencil'></i></a>
+                //     "<button class='btn btn-danger btn-sm btn-delete deleteButton' data-toggle='confirmation' data-singleton='true' value='".$item->id."'><i class='fa fa-remove'></i></button>";
+
+                // })
+                ->rawColumns(['message'])
                 ->make(true);
 
     }
@@ -98,9 +120,10 @@ class MessageToAdminController extends Controller
         $user = User::find(Auth::user()->id);
 
         $request['user_id']= $user->id;
+        $request['date']= Carbon::now();
         $messageToAdmin = MessageToAdmin::create($request->all());
 
-        return response()->json(['url' => url('/messageToAdmin')]);
+        return response()->json(['url' => url('/messageToAdminNew')]);
     }
 
     /**
@@ -110,7 +133,15 @@ class MessageToAdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $userRole = Auth::user()->role;
+        $userId = Auth::user()->id;
+            
+        if (($userRole == 'Admin') or ($userRole == 'Master')) {
+            $input['status']='read';
+            $messageToAdmin = MessageToAdmin::find($id)->update($input);
+        }
+
         $data = MessageToAdmin::where('message_to_admin.deleted_at', null)
                     ->join('users', 'message_to_admin.user_id', '=', 'users.id')
                     ->select('message_to_admin.*', 'users.email as user')->find($id);

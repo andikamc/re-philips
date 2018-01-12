@@ -82,23 +82,6 @@
      
                                 <select class="select2select" name="role" id="role" required>
 
-                                	<!-- <option value="Promoter" {{ (@$data->role == 'Promoter') ? "selected" : "" }}>Promoter</option>
-                                	<option value="Promoter Additional" {{ (@$data->role == 'Promoter Additional') ? 
-                                	"selected" : "" }}>Promoter Additional</option>
-                                	<option value="Promoter Event" {{ (@$data->role == 'Promoter Event') ? "selected" : "" }}>Promoter Event</option>
-                                	<option value="Demonstrator MCC" {{ (@$data->role == 'Demonstrator MCC') ? "selected" : "" }}>Demonstrator MCC</option>
-                                	<option value="Demonstrator DA" {{ (@$data->role == 'Demonstrator DA') ? "selected" : "" }}>Demonstrator DA</option>
-                                	<option value="ACT" {{ (@$data->role == 'ACT') ? "selected" : "" }}>ACT</option>
-                                	<option value="PPE" {{ (@$data->role == 'PPE') ? "selected" : "" }}>PPE</option>
-                                	<option value="BDT" {{ (@$data->role == 'BDT') ? "selected" : "" }}>BDT</option>
-                                	<option value="Salesman Explorer" {{ (@$data->role == 'Salesman Explorer') ? "selected" : "" }}>Salesman Explorer</option>
-                                	<option value="SMD" {{ (@$data->role == 'SMD') ? "selected" : "" }}>SMD</option>
-                                	<option value="SMD Coordinator" {{ (@$data->role == 'SMD Coordinator') ? "selected" : "" }}>SMD Coordinator</option>
-                                	<option value="HIC" {{ (@$data->role == 'HIC') ? "selected" : "" }}>HIC</option>
-                                	<option value="HIE" {{ (@$data->role == 'HIE') ? "selected" : "" }}>HIE</option>
-                                	<option value="SMD Additional" {{ (@$data->role == 'SMD Additional') ? "selected" : "" }}>SMD Additional</option>
-                                	<option value="ASC" {{ (@$data->role == 'ASC') ? "selected" : "" }}>ASC</option> -->
-
                                 	<option value="Driver" {{ (@$data->role == 'Driver') ? "selected" : "" }}>Driver</option>
                                 	<option value="Helper" {{ (@$data->role == 'Helper') ? "selected" : "" }}>Helper</option>
                                 	<option value="PCE" {{ (@$data->role == 'PCE') ? "selected" : "" }}>PCE</option>
@@ -142,12 +125,22 @@
 				          </div>
 				        </div>
 
+				        <div class="form-group">
+				          <label class="col-sm-2 control-label">Join Date</label>
+				          <div class="col-sm-9">
+				          	<div class="input-icon right">
+				          		<i class="fa"></i>
+				            	<input type="text" id="join_date" name="join_date" class="form-control" value="{{ @$data->join_date }}" placeholder="Join Date" />
+				            </div>
+				          </div>
+				        </div>
+
 				        <div id="dedicateContent" class="display-hide form-group">
 				          <label class="col-sm-2 control-label">Dedicate</label>
 				          <div class="col-sm-9">
 				          	<div class="input-icon right">
 				          		<i class="fa"></i>
-				            	<select class="select2select" name="dedicate" id="dedicate" required>
+				            	<select class="select2select" name="dedicate" id="dedicate">
 				            		<option></option>
 									<option value="DA" {{ (@$data->dedicate == 'DA') ? "selected" : "" }}>DA</option>
 									<option value="PC" {{ (@$data->dedicate == 'PC') ? "selected" : "" }}>PC</option>
@@ -423,14 +416,14 @@
 
 	         $('#stores').select2(setOptions('{{ route("data.store") }}', 'Store', function (params) {
 	         	if ($('#role').val() == 'Supervisor' || $('#role').val() == 'Supervisor Hybrid') {
-		        	filters['bySpv'] = $('#penampungUserId').val();
-		        	filters['byDedicateSpv'] = $('#dedicate').val();
+		        	filters['bySpvNew'] = $('#penampungUserId').val();
+		        	// filters['byDedicateSpv'] = $('#dedicate').val();
 		        }
 	            return filterData('store', params.term);
 	        }, function (data, params) {
 	            return {
 	                results: $.map(data, function (obj) {                                
-	                    return {id: obj.id, text: obj.store_id + " - " + obj.store_name_1 + " (" + obj.store_name_2 + ")"}
+	                    return {id: obj.id+","+obj.store_id+","+obj.dedicate, text: obj.store_id + " - " + obj.store_name_1 + " (" + obj.store_name_2 + ")"}
 	                })
 	            }
 	        }));
@@ -483,6 +476,7 @@
 			if(role == 'DM'){
 				$('#area').attr('required', 'required');
 				setSelect2IfPatch($("#area"), "{{ @$data->dmArea->area_id }}", "{{ @$data->dmArea->area->name }}");
+				setSelect2IfPatch($("#dedicate"), "{{ @$data->dmArea->dedicate }}", "{{ @$data->dmArea->dedicate }}");
 				document.getElementById('areaTitle').innerHTML = "DM AREA";
 				$('#dmContent').removeClass('display-hide');
 
@@ -614,7 +608,7 @@
                     select2Reset(element);
 
 	                    $.each(data, function() {
-							setSelect2IfPatch(element, this.id, this.store_id + " - " + this.store_name_1 + " (" + this.store_name_2 + ")");
+							setSelect2IfPatch(element, this.id+","+this.store_id+","+this.dedicate, this.store_id + " - " + this.store_name_1 + " (" + this.store_name_2 + ")");
 						});
 
             	}	
@@ -658,6 +652,25 @@
 			return false;
 		} 
 
+
+		function initDateTimePicker(){
+
+            // Filter Month
+            $('#join_date').datetimepicker({
+                format: "yyyy-mm-dd",
+                startView: "2",
+                minView: "2",
+                autoclose: true,
+            });
+            // Set to Month now
+            $('#join_date').val(
+            	{{( @$data->join_date ) ? "" : "moment().format(" }}
+            	'{{( @$data->join_date ) ? @$data->join_date : "YYYY-MM-DD" }}'
+            	{{( @$data->join_date ) ? "" : ")" }}
+            );
+
+        }
+
 		/*
 		 * Select2 change
 		 *
@@ -668,12 +681,24 @@
 		    
 		});
 
-		// On Change status
+
 		$(document).ready(function(){
+			
+			initDateTimePicker();
+
+			// On Change status
 		    $('input[type=radio][name=status]').change(function() {
 		        resetStore();
 		        setStore(this.value);
 		    });
+
+		    // On Change Dedicate
+		    // $('#dedicate').change(function() {
+		    //     $("#store").val('').change();
+		    //     $("#stores").val('').change();
+		    // });
+
+		    // $('div').removeClass('display-hide');
 		});
 
 	</script>	
